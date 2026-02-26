@@ -37,12 +37,13 @@ For each of these directories, check if it exists in ~/.claude/ and create a sym
 
 Directories to check: rules, skills, agents, docs, commands, knowledge, codemaps, routines, hooks, contexts, plans, sessions
 
-For each existing directory:
+For each existing directory, check before linking:
 ```bash
-ln -sf ~/.claude/{dir} {vault_path}/{dir}
+[ "$(readlink {vault_path}/{dir})" = "$HOME/.claude/{dir}" ] \
+  || ln -sf ~/.claude/{dir} {vault_path}/{dir}
 ```
 
-If the symlink already exists and points to the right target, skip it silently.
+This skips the symlink if it already points to the correct target, and only recreates it if it is missing or points elsewhere.
 
 ## Step 5: Symlink project memory directories
 
@@ -61,10 +62,11 @@ Derive a readable slug from the project directory name:
 - Use the last meaningful path segment if multiple exist
 
 ```bash
-ln -sf ~/.claude/projects/{project}/memory {vault_path}/memory/{slug}
+[ -L {vault_path}/memory/{slug} ] \
+  || ln -sf ~/.claude/projects/{project}/memory {vault_path}/memory/{slug}
 ```
 
-Skip if symlink already exists.
+Skip if a symlink already exists at that path.
 
 ## Step 6: Symlink Desktop HTML files
 
