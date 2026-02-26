@@ -2,7 +2,7 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "obsidian-bridge",
   "metadata": {
-    "description": "Zero-copy Obsidian vault over your ~/.claude/ knowledge base via symlinks."
+    "description": "Zero-copy Obsidian vault over your ~/.claude/ knowledge base via symlinks. One command to make all of Claude's memory, rules, skills, agents, contexts, and plans browsable in Obsidian — no duplication, no sync."
   },
   "owner": {
     "name": "JB",

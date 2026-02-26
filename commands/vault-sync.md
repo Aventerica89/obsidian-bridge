@@ -31,7 +31,6 @@ For each of these files, note whether it exists and its current line count:
 
 ## Step 3: Regenerate all dashboard pages
 
-Follow the same dashboard generation logic as `/vault-init` Step 7.
 Read the actual current state of each symlinked directory.
 Overwrite all dashboard pages with fresh content.
 
